@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import Repositorio.UsuarioRepositorio;
 import com.example.demo.Usuario;
+import GitContent.GitUsuarioContent;
 
 @RestController
 @RequestMapping("/Usuario")
@@ -31,6 +32,14 @@ public class UsuarioController {
 	@GetMapping("/Lista/{id}")
 	public Usuario GetUsuarioById(@PathVariable Long id) {
 		return repositorio.getById(id);
+	}
+	
+	@GetMapping("/Lista/{id}/github")
+	public String ShowRepos(@PathVariable Long id) {
+		Usuario novo_usuario = repositorio.getById(id);
+		GitUsuarioContent geet = new GitUsuarioContent();
+		List<String> novo = geet.GitFunction(novo_usuario.getGitHub());
+		return novo.toString();
 	}
 	
 	@DeleteMapping("/DeletarUsuario/{id}")
