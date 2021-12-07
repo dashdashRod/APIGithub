@@ -1,4 +1,4 @@
-package GitContent;
+package com.Application.GitContent;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -11,7 +11,7 @@ import java.util.Arrays;
 
 public class GitUsuarioContent {
 	private List<String> Lista(String elemento){
-		return Arrays.asList(elemento.split(","));
+		return Arrays.asList((elemento.split(",")));
 	}
 	
 	private List<String> GetAvatar(List<String> lista) {
@@ -36,7 +36,7 @@ public class GitUsuarioContent {
 		int calculo1;
 		int calculo2;
 		for(String valor : item) {
-			if(valor.contains("hmtl_url") && valor.contains("http")) {
+			if(valor.contains("html_url") && valor.chars().filter(ch -> ch == '/').count() == 4) {
 				calculo1 = valor.indexOf("http");
 				calculo2 = valor.length();
 				corretos.add(valor.substring(calculo1,calculo2));
@@ -74,7 +74,7 @@ public class GitUsuarioContent {
 	}
 	
 	public String modificador(String gitHubUsuario) {
-		return (gitHubUsuario.replace("github.com/", "api.github.com/orgs/") + "/repos");
+		return (gitHubUsuario.replace("github.com/", "api.github.com/users/") + "/repos");
 	}
 	
 }

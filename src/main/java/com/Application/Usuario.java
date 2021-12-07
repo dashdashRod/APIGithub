@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.Application;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,11 +26,20 @@ public class Usuario {
 	private String gitHub = new String();
 	@Column(nullable = false)
 	private String email = new String();
-	@Column
 	private Date Data = new Date();
 	private final String RegEXPattern = "^(?=.{1,64}@)[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-]+)*@" 
 	        + "[^-][A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
 	private final String NameRegex = "^([ \\u00c0-\\u01ffa-zA-Z'\\-])+$";
+	
+	
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+	public Long getId() {
+		return this.id;
+	}
+	
 	public String getName() {
 		return name;
 	}
